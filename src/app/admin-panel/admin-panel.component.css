@@ -1,0 +1,10 @@
+.main-container{
+        width: 280px;
+        height: 100vh;
+        position: fixed;
+        z-index: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+        top: 0;
+        left: 0;
+}

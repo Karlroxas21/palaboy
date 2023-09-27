@@ -1,0 +1,52 @@
+.text-contact-us {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+        margin-bottom: 50px;
+}
+
+.text-contact-us h1 {
+        font-weight: bold;
+}
+
+.contact-container {
+        margin-left: 200px;
+        margin-right: 200px;
+        display: flex;
+        justify-content: space-between;
+}
+
+.organization {
+        display: flex;
+        flex-direction: column;
+}
+
+.organization img {
+        width: 200px;
+}
+
+.contacts,
+.email,
+.contact,
+.location {
+        display: flex;
+        padding: 10px;
+
+}
+
+.contacts img,
+.email img,
+.contact img,
+.location img {
+        width: 30px;
+        height: 30px;
+}
+
+.email p,
+.location p {
+        padding-left: 10px;
+}
+
+.contacts {
+        flex-direction: column;
+}

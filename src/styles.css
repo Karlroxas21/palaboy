@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+html:not(.exclude-bg),
+body:not(.exclude-bg) {
+    font-family: "Source Sans Pro";
+    background-image: url("assets/bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.bg-green {
+    background-color: #e4faeb97;
+}
+
+.credits {
+    background-color: #f7e9c3;
+}
+
+.text-justify {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.text-big {
+    font-size: 5em;
+}
+
+.resizable-input {
+    resize: both;
+}
