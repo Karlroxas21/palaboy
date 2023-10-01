@@ -16,6 +16,10 @@ import { AdminRescueComponent } from './admin-rescue/admin-rescue.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AdminAfterCareComponent } from './admin-after-care/admin-after-care.component';
 
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,13 +32,16 @@ import { AdminAfterCareComponent } from './admin-after-care/admin-after-care.com
     LoginComponent,
     AdminRescueComponent,
     AdminPanelComponent,
-    AdminAfterCareComponent
+    AdminAfterCareComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

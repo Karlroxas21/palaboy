@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { AdminRescueService } from './admin-rescue.service';
 import { Router } from '@angular/router';
 
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-admin-rescue',
   templateUrl: './admin-rescue.component.html',
@@ -27,7 +28,8 @@ export class AdminRescueComponent implements OnInit {
   constructor(private http: HttpClient,
     private titleService: Title,
     private AdminRescueService: AdminRescueService,
-    private router: Router) { }
+    private router: Router,
+    private toastr: ToastrService) { }
  
 
   arrayPusher(refArray: string[], size: number, property: string) {
@@ -68,16 +70,14 @@ export class AdminRescueComponent implements OnInit {
       this.AdminRescueService.updateData(this.rescue[0]).subscribe(updatedData =>{
         this.router.navigate(['/admin-rescue']);
         
-        // Toaster here
-        console.log('Update success', updatedData);
+        this.toastr.success('Saved success');
       }, (err) =>{
-        // Toaster here
+        this.toastr.error("Error updating");
         console.error("Error updating item. ", err);
       })
       this.isThereAnyChanges = false;
     }else{
-      // Toaster here
-      console.log('No changes were made.');
+      this.toastr.info("No changes were made");
     }
   }
 
