@@ -14,11 +14,17 @@
     <hr />
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <a href="#" class="nav-link active" aria-current="page">
+        <a href="#" class="nav-link clr-wht" aria-current="page" routerLink="/admin-rescue" routerLinkActive="active">
           <!-- <svg class="bi me-2" width="16" height="16">
             <use xlink:href="#home" />
           </svg> -->
           Admin Rescue
+        </a>
+        <a href="#" class="nav-link clr-wht" aria-current="page" routerLink="/admin-aftercare" routerLinkActive="active">
+          <!-- <svg class="bi me-2" width="16" height="16">
+            <use xlink:href="#home" />
+          </svg> -->
+          Admin After Care
         </a>
       </li>
       <!-- <li>
@@ -76,7 +82,7 @@
         class="dropdown-menu dropdown-menu-dark text-small shadow"
         aria-labelledby="dropdownUser1"
       >
-        <li><a class="dropdown-item" href="#">Sign out</a></li>
+        <li><a class="dropdown-item pointer" (click)="logout()">Sign out</a></li>
       </ul>
     </div>
   </div>

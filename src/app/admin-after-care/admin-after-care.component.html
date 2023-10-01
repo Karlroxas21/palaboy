@@ -1,0 +1,485 @@
+<app-admin-panel></app-admin-panel>
+
+<div class="main-container">
+  <div class="container-fluid p-5 row justify-content-center">
+    <div class="col-md-8">
+      <div *ngIf="!editing_title[0]" (click)="startEditingTitle(0)">
+        <h1 class="text-center">
+          <b>{{ title[0] }}</b>
+        </h1>
+      </div>
+
+      <textarea
+        rows="1"
+        cols="50"
+        style="font-size: 2rem; font-weight: bold"
+        *ngIf="editing_title[0]"
+        (blur)="finishEditingTitle(0, $event)"
+        class="resizable-input"
+        (ngModelChange)="doesChange()"
+        [(ngModel)]="aftercare[0].title[0]"
+      ></textarea>
+
+      <div *ngIf="!editing_title[1]" (click)="startEditingTitle(1)">
+        <h4 class="text-center">
+          <b>{{ title[1] }}</b>
+        </h4>
+      </div>
+
+      <textarea
+        rows="1"
+        cols="50"
+        style="font-size: 1.5rem; font-weight: bold"
+        *ngIf="editing_title[1]"
+        (blur)="finishEditingTitle(1, $event)"
+        class="resizable-input"
+        (ngModelChange)="doesChange()"
+        [(ngModel)]="aftercare[0].title[1]"
+      ></textarea>
+    </div>
+    <div class="container-fluid d-flex justify-content-center p-3 row">
+      <div class="col-md-4 pb-3">
+        <div class="container-fluid rounded-3 shadow bg-light p-5">
+          <div *ngIf="!editing_box_1[0]" (click)="startEditingBox1(0)">
+            <h4 class="text-center">
+              <b>{{ box_1[0] }}</b>
+            </h4>
+          </div>
+
+          <textarea
+            rows="1"
+            cols="25"
+            style="font-size: 1.5rem; font-weight: bold"
+            *ngIf="editing_box_1[0]"
+            (blur)="finishEditingBox1(0, $event)"
+            class="resizable-input"
+            (ngModelChange)="doesChange()"
+            [(ngModel)]="aftercare[0].box_1[0]"
+          ></textarea>
+
+          <div *ngIf="!editing_box_1[1]" (click)="startEditingBox1(1)">
+            <p>{{ box_1[1] }}</p>
+          </div>
+
+          <textarea
+            rows="10"
+            cols="40"
+            style="font-size: 1rem"
+            *ngIf="editing_box_1[1]"
+            (blur)="finishEditingBox1(1, $event)"
+            class="resizable-input"
+            (ngModelChange)="doesChange()"
+            [(ngModel)]="aftercare[0].box_1[1]"
+          ></textarea>
+        </div>
+      </div>
+      <div class="col-md-4 pb-3">
+        <div class="container-fluid rounded-3 shadow bg-light p-5">
+          <div *ngIf="!editing_box_2[0]" (click)="startEditingBox2(0)">
+            <h4 class="text-center">
+              <b>{{ box_2[0] }}</b>
+            </h4>
+          </div>
+
+          <textarea
+            rows="1"
+            cols="25"
+            style="font-size: 1.5rem; font-weight: bold"
+            *ngIf="editing_box_2[0]"
+            (blur)="finishEditingBox2(0, $event)"
+            class="resizable-input"
+            (ngModelChange)="doesChange()"
+            [(ngModel)]="aftercare[0].box_2[0]"
+          ></textarea>
+
+          <div *ngIf="!editing_box_2[1]" (click)="startEditingBox2(1)">
+            <p>{{ box_2[1] }}</p>
+          </div>
+
+          <textarea
+            rows="10"
+            cols="40"
+            style="font-size: 1rem"
+            *ngIf="editing_box_2[1]"
+            (blur)="finishEditingBox2(1, $event)"
+            class="resizable-input"
+            (ngModelChange)="doesChange()"
+            [(ngModel)]="aftercare[0].box_2[1]"
+          ></textarea>
+        </div>
+      </div>
+      <div class="col-md-4 pb-3">
+        <div class="container-fluid rounded-3 shadow bg-light p-5">
+          <div *ngIf="!editing_box_3[0]" (click)="startEditingBox3(0)">
+            <h4 class="text-center">
+              <b>{{ box_3[0] }}</b>
+            </h4>
+          </div>
+
+          <textarea
+            rows="1"
+            cols="25"
+            style="font-size: 1.5rem; font-weight: bold"
+            *ngIf="editing_box_3[0]"
+            (blur)="finishEditingBox3(0, $event)"
+            class="resizable-input"
+            (ngModelChange)="doesChange()"
+            [(ngModel)]="aftercare[0].box_3[0]"
+          ></textarea>
+
+          <div *ngIf="!editing_box_3[1]" (click)="startEditingBox3(1)">
+            <p>{{ box_3[1] }}</p>
+          </div>
+
+          <textarea
+            rows="10"
+            cols="40"
+            style="font-size: 1rem"
+            *ngIf="editing_box_3[1]"
+            (blur)="finishEditingBox3(1, $event)"
+            class="resizable-input"
+            (ngModelChange)="doesChange()"
+            [(ngModel)]="aftercare[0].box_3[1]"
+          ></textarea>
+        </div>
+      </div>
+      <div class="col-md-4 pb-3">
+        <div class="container-fluid rounded-3 shadow bg-light p-5">
+          <div *ngIf="!editing_box_4[0]" (click)="startEditingBox4(0)">
+            <h4 class="text-center">
+              <b>{{ box_4[0] }}</b>
+            </h4>
+          </div>
+
+          <textarea
+            rows="1"
+            cols="25"
+            style="font-size: 1.5rem; font-weight: bold"
+            *ngIf="editing_box_4[0]"
+            (blur)="finishEditingBox4(0, $event)"
+            class="resizable-input"
+            (ngModelChange)="doesChange()"
+            [(ngModel)]="aftercare[0].box_4[0]"
+          ></textarea>
+          <div *ngIf="!editing_box_4[1]" (click)="startEditingBox4(1)">
+            <p>{{ box_4[1] }}</p>
+          </div>
+
+          <textarea
+            rows="10"
+            cols="40"
+            style="font-size: 1rem"
+            *ngIf="editing_box_4[1]"
+            (blur)="finishEditingBox4(1, $event)"
+            class="resizable-input"
+            (ngModelChange)="doesChange()"
+            [(ngModel)]="aftercare[0].box_4[1]"
+          ></textarea>
+        </div>
+      </div>
+      <div class="col-md-4 pb-3">
+        <div class="container-fluid rounded-3 shadow bg-light p-5">
+          <div *ngIf="!editing_box_5[0]" (click)="startEditingBox5(0)">
+            <h4 class="text-center">
+              <b>{{ box_5[0] }}</b>
+            </h4>
+          </div>
+
+          <textarea
+            rows="1"
+            cols="25"
+            style="font-size: 1.5rem; font-weight: bold"
+            *ngIf="editing_box_5[0]"
+            (blur)="finishEditingBox5(0, $event)"
+            class="resizable-input"
+            (ngModelChange)="doesChange()"
+            [(ngModel)]="aftercare[0].box_5[0]"
+          ></textarea>
+
+          <div *ngIf="!editing_box_5[1]" (click)="startEditingBox5(1)">
+            <p>{{ box_5[1] }}</p>
+          </div>
+
+          <textarea
+            rows="10"
+            cols="40"
+            style="font-size: 1rem"
+            *ngIf="editing_box_5[1]"
+            (blur)="finishEditingBox5(1, $event)"
+            class="resizable-input"
+            (ngModelChange)="doesChange()"
+            [(ngModel)]="aftercare[0].box_5[1]"
+          ></textarea>
+        </div>
+      </div>
+      <div class="col-md-4 pb-3">
+        <div class="container-fluid rounded-3 shadow bg-light p-5">
+          <div *ngIf="!editing_box_6[0]" (click)="startEditingBox6(0)">
+            <h4 class="text-center">
+              <b>{{ box_6[0] }}</b>
+            </h4>
+          </div>
+
+          <textarea
+            rows="1"
+            cols="25"
+            style="font-size: 1.5rem; font-weight: bold"
+            *ngIf="editing_box_6[0]"
+            (blur)="finishEditingBox6(0, $event)"
+            class="resizable-input"
+            (ngModelChange)="doesChange()"
+            [(ngModel)]="aftercare[0].box_6[0]"
+          ></textarea>
+          <div *ngIf="!editing_box_6[1]" (click)="startEditingBox6(1)">
+            <p>{{ box_6[1] }}</p>
+          </div>
+
+          <textarea
+            rows="10"
+            cols="40"
+            style="font-size: 1rem"
+            *ngIf="editing_box_6[1]"
+            (blur)="finishEditingBox6(1, $event)"
+            class="resizable-input"
+            (ngModelChange)="doesChange()"
+            [(ngModel)]="aftercare[0].box_6[1]"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <section id="dangerousfood">
+        <p class="text-big text-center"></p>
+        <div *ngIf="!editing_title[2]" (click)="startEditingTitle(2)">
+          <h1 class="text-center">
+            <b>{{ title[2] }}</b>
+          </h1>
+        </div>
+
+        <textarea
+          rows="1"
+          cols="50"
+          style="font-size: 2rem; font-weight: bold"
+          *ngIf="editing_title[2]"
+          (blur)="finishEditingTitle(2, $event)"
+          class="resizable-input"
+          (ngModelChange)="doesChange()"
+          [(ngModel)]="aftercare[0].title[2]"
+        ></textarea>
+        <div class="container-fluid d-flex justify-content-center">
+          <img src="assets/badfood.png" />
+        </div>
+      </section>
+      <section id="safefood" class="row d-flex justify-content-center">
+        <div class="col-md-8">
+          <div *ngIf="!editing_title[3]" (click)="startEditingTitle(3)">
+            <h1 class="text-center">
+              <b>{{ title[3] }}</b>
+            </h1>
+          </div>
+
+          <textarea
+            rows="1"
+            cols="50"
+            style="font-size: 2rem; font-weight: bold"
+            *ngIf="editing_title[3]"
+            (blur)="finishEditingTitle(3, $event)"
+            class="resizable-input"
+            (ngModelChange)="doesChange()"
+            [(ngModel)]="aftercare[0].title[3]"
+          ></textarea>
+          <div
+            *ngIf="!editing_discussions[0]"
+            (click)="startEditingDiscussions(0)"
+          >
+            <p class="fs-3">
+              <b>1. {{ discussions[0] }}</b>
+            </p>
+          </div>
+
+          <textarea
+            rows="1"
+            cols="25"
+            style="font-size: 1.5rem; font-weight: bold"
+            *ngIf="editing_discussions[0]"
+            (blur)="finishEditingDiscussions(0, $event)"
+            class="resizable-input"
+            (ngModelChange)="doesChange()"
+            [(ngModel)]="aftercare[0].discussions[0]"
+          ></textarea>
+
+          <div
+            *ngIf="!editing_discussions[1]"
+            (click)="startEditingDiscussions(1)"
+          >
+            <p class="text-justify">{{ discussions[1] }}</p>
+          </div>
+
+          <textarea
+            rows="2"
+            cols="120"
+            style="font-size: 1rem"
+            *ngIf="editing_discussions[1]"
+            (blur)="finishEditingDiscussions(1, $event)"
+            class="resizable-input"
+            (ngModelChange)="doesChange()"
+            [(ngModel)]="aftercare[0].discussions[1]"
+          ></textarea>
+
+          <div
+            *ngIf="!editing_discussions[2]"
+            (click)="startEditingDiscussions(2)"
+          >
+            <p class="text-justify">{{ discussions[2] }}</p>
+          </div>
+
+          <textarea
+            rows="3"
+            cols="120"
+            style="font-size: 1rem"
+            *ngIf="editing_discussions[2]"
+            (blur)="finishEditingDiscussions(2, $event)"
+            class="resizable-input"
+            (ngModelChange)="doesChange()"
+            [(ngModel)]="aftercare[0].discussions[2]"
+          ></textarea>
+
+          <div
+            *ngIf="!editing_discussions[3]"
+            (click)="startEditingDiscussions(3)"
+          >
+            <p class="fs-3">
+              <b>2. {{ discussions[3] }}</b>
+            </p>
+          </div>
+
+          <textarea
+            rows="1"
+            cols="50"
+            style="font-size: 1.5rem; font-weight: bold"
+            *ngIf="editing_discussions[3]"
+            (blur)="finishEditingDiscussions(3, $event)"
+            class="resizable-input"
+            (ngModelChange)="doesChange()"
+            [(ngModel)]="aftercare[0].discussions[3]"
+          ></textarea>
+
+          <div
+            *ngIf="!editing_discussions[4]"
+            (click)="startEditingDiscussions(4)"
+          >
+            <p class="text-justify">{{ discussions[4] }}</p>
+          </div>
+
+          <textarea
+            rows="2"
+            cols="120"
+            style="font-size: 1rem"
+            *ngIf="editing_discussions[4]"
+            (blur)="finishEditingDiscussions(4, $event)"
+            class="resizable-input"
+            (ngModelChange)="doesChange()"
+            [(ngModel)]="aftercare[0].discussions[4]"
+          ></textarea>
+
+          <div
+            *ngIf="!editing_discussions[5]"
+            (click)="startEditingDiscussions(5)"
+          >
+            <p class="text-justify">{{ discussions[5] }}</p>
+          </div>
+
+          <textarea
+            rows="2"
+            cols="120"
+            style="font-size: 1rem"
+            *ngIf="editing_discussions[5]"
+            (blur)="finishEditingDiscussions(5, $event)"
+            class="resizable-input"
+            (ngModelChange)="doesChange()"
+            [(ngModel)]="aftercare[0].discussions[5]"
+          ></textarea>
+
+          <div
+            *ngIf="!editing_discussions[6]"
+            (click)="startEditingDiscussions(6)"
+          >
+            <p class="fs-3">
+              <b>3. {{ discussions[6] }}</b>
+            </p>
+          </div>
+
+          <textarea
+            rows="1"
+            cols="50"
+            style="font-size: 1.5rem; font-weight: bold"
+            *ngIf="editing_discussions[6]"
+            (blur)="finishEditingDiscussions(6, $event)"
+            class="resizable-input"
+            (ngModelChange)="doesChange()"
+            [(ngModel)]="aftercare[0].discussions[6]"
+          ></textarea>
+          <div
+            *ngIf="!editing_discussions[7]"
+            (click)="startEditingDiscussions(7)"
+          >
+            <p class="text-justify">{{ discussions[7] }}</p>
+          </div>
+
+          <textarea
+            rows="3"
+            cols="130"
+            style="font-size: 1rem"
+            *ngIf="editing_discussions[7]"
+            (blur)="finishEditingDiscussions(7, $event)"
+            class="resizable-input"
+            (ngModelChange)="doesChange()"
+            [(ngModel)]="aftercare[0].discussions[7]"
+          ></textarea>
+          <div
+            *ngIf="!editing_discussions[8]"
+            (click)="startEditingDiscussions(8)"
+          >
+            <p class="text-justify">{{ discussions[8] }}</p>
+          </div>
+
+          <textarea
+            rows="3"
+            cols="130"
+            style="font-size: 1rem"
+            *ngIf="editing_discussions[8]"
+            (blur)="finishEditingDiscussions(8, $event)"
+            class="resizable-input"
+            (ngModelChange)="doesChange()"
+            [(ngModel)]="aftercare[0].discussions[8]"
+          ></textarea>
+          <div
+            *ngIf="!editing_discussions[9]"
+            (click)="startEditingDiscussions(9)"
+          >
+            <p class="text-justify">{{ discussions[9] }}</p>
+          </div>
+
+          <textarea
+            rows="3"
+            cols="130"
+            style="font-size: 1rem"
+            *ngIf="editing_discussions[9]"
+            (blur)="finishEditingDiscussions(9, $event)"
+            class="resizable-input"
+            (ngModelChange)="doesChange()"
+            [(ngModel)]="aftercare[0].discussions[9]"
+          ></textarea>
+        </div>
+      </section>
+      <section id="bathe">
+        <div class="container-fluid justify-content-center d-flex">
+          <img src="assets/bathe.png" class="w-75" />
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="publish">
+    <button type="buton" class="button" (click)="updateData()">Save</button>
+  </div>
+</div>

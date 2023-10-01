@@ -10,7 +10,7 @@ export class AppComponent {
   title = 'palaboy';
 
   hideNavbar = false;
-  hideNavbarPages= ['/login', '/admin-rescue'];
+  hideNavbarPages= ['/login', '/admin-rescue', '/admin-aftercare'];
 
   constructor(private router: Router){
     router.events.subscribe(event =>{
