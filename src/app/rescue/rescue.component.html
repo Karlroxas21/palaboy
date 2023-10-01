@@ -1,143 +1,92 @@
-<div class="container-fluid p-5 row justify-content-center">
+<div class="container-fluid p-5 row justify-content-center" *ngFor="let item of rescue">
   <div class="col-md-8">
     <h1 class="text-center">
-      <b>What to do if you find a stray and want to help</b>
+      <b>{{item.title[0]}}</b>
     </h1>
-    <p class="text-center"><b>#AdoptDontShop</b></p>
+    <p class="text-center"><b>{{item.title[1]}}</b></p>
   </div>
   <div class="container-fluid d-flex justify-content-center p-3 row">
     <div class="col-md-4 pb-3">
       <div class="container-fluid rounded-3 shadow bg-green p-5">
-        <h4 class="text-center pb-3"><b>CHECK IF THE DOG IS AGRESSIVE</b></h4>
+        <h4 class="text-center pb-3"><b>{{item.box_1[0]}}</b></h4>
         <p class="p-0 m-0">
-          <b>Signs that a stray dog might be aggressive:</b>
+          <b>{{item.box_1[1]}}</b>
         </p>
         <ul class="p-0 m-0">
-          <li>Still and stiff body language</li>
-          <li>Lunging</li>
-          <li>Growling</li>
-          <li>Showing teeth</li>
-          <li>Snarling</li>
-          <li>Threatening barking</li>
-          <li>Biting or attempted biting</li>
+          <li>{{item.box_1[2]}}</li>
+          <li>{{item.box_1[3]}}</li>
+          <li>{{item.box_1[4]}}</li>
+          <li>{{item.box_1[5]}}</li>
+          <li>{{item.box_1[6]}}</li>
+          <li>{{item.box_1[7]}}</li>
+          <li>{{item.box_1[8]}}</li>
         </ul>
       </div>
     </div>
     <div class="col-md-4 pb-3">
       <div class="container-fluid rounded-3 shadow bg-green p-5">
         <h4 class="text-center pb-3">
-          <b>Make sure he&apos;s out of harm&apos;s way</b>
+          <b>{{item.box_2[0]}}</b>
         </h4>
         <p class="p-0 m-0 text-justify">
-          If the stray dog you found doesn&apos;t appear aggressive, you should
-          try to get him somewhere safe by approaching him slowly and calmly. If
-          he is acting aggressively, call a local rescue for help. (More on that
-          below.)
+          {{item.box_2[1]}}
         </p>
         <p class="p-0 m-0 text-justify">
-          “Be sure you and the pet are safe from traffic and other imminent
-          dangers,” Labelle said. If the pup&apos;s too scared to go with you,
-          you might need to bribe him with some food or treats. “Very carefully
-          try to coax [him] into a safe place and try to put a slip (a leash
-          with a loop at the end to serve as a collar and leash combined) over
-          [his] head, and/or get into your car,” Labelle said.
+          {{item.box_2[2]}}
         </p>
       </div>
     </div>
     <div class="col-md-4 pb-3">
       <div class="container-fluid rounded-3 shadow bg-green p-5">
         <h4 class="text-center pb-3">
-          <b>Have him scanned for a microchip</b>
+          <b>{{item.box_3[0]}}</b>
         </h4>
         <p class="p-0 m-0 text-justify">
-          If you manage to get the stray dog to come with you in your car, your
-          first stop should be the nearest vet. They can scan the pup for a
-          microchip to determine whether he&apos;s actually a stray at all. If
-          he&apos;s chipped, the vet will be able to provide you with his
-          family&apos;s contact information so you can reconnect them with their
-          lost dog. “There is a good chance someone is looking for this pet,”
+          {{item.box_3[1]}}
         </p>
       </div>
     </div>
     <div class="col-md-4 pb-3">
       <div class="container-fluid rounded-3 shadow bg-green p-5">
-        <h4 class="text-center pb-3"><b>Where to take a stray dog</b></h4>
+        <h4 class="text-center pb-3"><b>{{item.box_4[0]}}</b></h4>
         <p class="p-0 m-0 text-justify pb-3">
-          There are a couple places to take a stray dog in the event that
-          he&apos;s not microchipped or you can&apos;t get in touch with the
-          people associated with his chip.
+          {{item.box_4[1]}}
         </p>
-        <p class="p-0 m-0 text-justify"><b>An animal rescue</b></p>
+        <p class="p-0 m-0 text-justify"><b>{{item.box_4[2]}}</b></p>
         <p class="p-0 m-0 text-justify">
-          See if there are any rescues in your area that have the resources to
-          take in the stray pup. If they do, you can bring him there. Rescues
-          tend to have pretty in-depth adoption protocols to ensure that the
-          animals they help end up in the best homes possible.
+          {{item.box_4[3]}}
         </p>
         <p class="p-0 m-0 text-justify pb-3">
-          If you can&apos;t find a rescue that can take in the stray dog you
-          found, and you have the space and the means to care for him, you could
-          bring him home temporarily and try to find someone to adopt him on
-          your own.
+          {{item.box_4[4]}}
         </p>
-        <p class="p-0 m-0 text-justify"><b>A shelter (as a last resort)</b></p>
+        <p class="p-0 m-0 text-justify">{{item.box_4[5]}}</p>
+       
+      </div>
+    </div>
+    <div class="col-md-4 pb-3">
+      <div class="container-fluid rounded-3 shadow bg-green p-5">
+        <h4 class="text-center pb-3"><b>{{item.box_5[0]}}</b></h4>
         <p class="p-0 m-0 text-justify">
-          If there are no rescues in your area that have room for a stray dog
-          and you can&apos;t take him in yourself, you can bring him to a
-          shelter. But this should be once you&apos;ve exhausted all other
-          options.
+          {{item.box_5[1]}}
         </p>
-        <p class="p-0 m-0 text-justify">
-          That&apos;s because a lot of shelters don&apos;t have a veterinary
-          staff on hand, so there&apos;s potential the stray pup could be
-          euthanized there if he gets sick — even at ones advertised as no-kill
-          shelters.
+        <p class="p-0 m-0 text-justify pb-3">
+          {{item.box_5[2]}}
         </p>
         <p class="p-0 m-0 text-justify">
-          “When leaving the pet at the shelter, you can ask for &apos;first
-          right of refusal&apos; in case no one shows up to claim the dog, you
-          can adopt it,” Labelle said. “This also ensures you could get it to a
-          rescue who will re-home or see [that] the dog does not get overlooked
-          at the shelter.”
+          {{item.box_5[3]}}
+        </p>
+        <p class="p-0 m-0 text-justify">
+          {{item.box_5[4]}}
+        </p>
+        <p class="p-0 m-0 text-justify">
+          {{item.box_5[5]}}
         </p>
       </div>
     </div>
     <div class="col-md-4 pb-3">
       <div class="container-fluid rounded-3 shadow bg-green p-5">
-        <h4 class="text-center pb-3"><b>Who to call for a stray dog</b></h4>
-        <p class="p-0 m-0 text-justify">
-          If you find a stray dog but can&apos;t seem to get him to come with
-          you — or simply don&apos;t know how — call local rescues. Sometimes,
-          rescues have the right tools and experienced helpers to effectively
-          and safely collect the pup, even if he&apos;s frightened.
-        </p>
-        <p class="p-0 m-0 text-justify pb-3">
-          Only call animal control if you can&apos;t get a hold of a rescue that
-          can help, and you can&apos;t safely get the dog to go with you on your
-          own.
-        </p>
-        <p class="p-0 m-0 text-justify">
-          “If a dog is aggressive or too scared to approach, call animal
-          control,” Labelle said. Animal control really should only be called in
-          emergency situations or as a last resort, because they work with
-          shelters and will take the stray dog there.
-        </p>
-        <p class="p-0 m-0 text-justify">
-          So, finding a stray dog can seem scary, sad and stressful, but there
-          are plenty of ways for you to help. And even if you aren&apos;t quite
-          sure what to do, calling local rescues can make all the difference.
-        </p>
-        <p class="p-0 m-0 text-justify">
-          We independently pick all the products we recommend because we love
-          them and think you will too. If you buy a product from a link on our
-          site, we may earn a commission.
-        </p>
-      </div>
-    </div>
-    <div class="col-md-4 pb-3">
-      <div class="container-fluid rounded-3 shadow bg-green p-5">
-        <h4 class="text-center pb-3"><b>Spread the word!</b></h4>
-        <p class="p-0 m-0 text-justify">Inspire and</p>
+        <h4 class="text-center pb-3"><b>{{item.box_6[0]}}</b></h4>
+        <p class="p-0 m-0 text-justify">I{{item.box_6[1]}}</p>
       </div>
     </div>
   </div>

@@ -115,6 +115,29 @@ app.post('/login', async (req, res) =>{
                 res.status(500).json({message: "Internal server error1"});
         }
 })
+
+// After Care
+app.get('/aftercare', async(req, res) =>{
+        try{
+                const aftercare = await AfterCare.find();
+                res.json(aftercare);
+        }catch(err){
+                console.error();
+                res.status(500).json({ message: 'Internal server error'});
+        }
+})
+
+// Rescue
+app.get('/rescue', async(req, res) =>{
+        try{
+                const rescue = await Rescue.find();
+                res.json(rescue);
+        }catch(err){
+                console.error();
+                res.status(500).json({ message: 'Internal server error'});
+        }
+})
+
 app.listen(port, ()=>{
         console.log(`Listening on ${port}`);
 })
