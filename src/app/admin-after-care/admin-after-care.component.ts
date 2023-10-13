@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AdminAfterCareService } from './admin-aftercare.service';
 
 import { ToastrService } from 'ngx-toastr';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 @Component({
   selector: 'app-admin-after-care',
   templateUrl: './admin-after-care.component.html',
@@ -36,7 +37,8 @@ export class AdminAfterCareComponent implements OnInit {
     private titleService: Title,
     private AdminAfterCareService: AdminAfterCareService,
     private router: Router,
-    private toastr: ToastrService){}
+    private toastr: ToastrService,
+    private sanitizer: DomSanitizer){}
 
   
   arrayPusher(refArray: string[], size: number, property: string){
@@ -77,14 +79,167 @@ export class AdminAfterCareComponent implements OnInit {
 
   updateData(): void{
     if(this.isAnyChanges()){
-      this.AdminAfterCareService.updateData(this.aftercare[0]).subscribe(updatedData =>{
+
+      const XSS: string [] = ["<script>", "</script>", "<img>", "</img", "<iframe>", "</iframe>", "onload", "onerror"]
+      
+      const contentTitle: string [] = [
+        this.aftercare[0].title[0], 
+        this.aftercare[0].title[1], 
+        this.aftercare[0].title[2], 
+        this.aftercare[0].title[3]];
+
+      const contentBox1: string [] = [
+        this.aftercare[0].box_1[0], 
+        this.aftercare[0].box_1[1]];
+        
+      const contentBox2: string [] = [
+        this.aftercare[0].box_2[0], 
+        this.aftercare[0].box_2[1]];
+
+      const contentBox3: string [] = [
+        this.aftercare[0].box_3[0], 
+        this.aftercare[0].box_3[1]];
+
+      const contentBox4: string [] = [
+        this.aftercare[0].box_4[0], 
+        this.aftercare[0].box_4[1]];
+
+      const contentBox5: string [] = [
+        this.aftercare[0].box_5[0], 
+        this.aftercare[0].box_5[1]];
+
+      const contentBox6: string [] = [
+        this.aftercare[0].box_6[0], 
+        this.aftercare[0].box_6[1]];
+
+      const contentDiscussions: string [] = [
+        this.aftercare[0].discussions[0], 
+        this.aftercare[0].discussions[1],
+        this.aftercare[0].discussions[2], 
+        this.aftercare[0].discussions[3],
+        this.aftercare[0].discussions[4], 
+        this.aftercare[0].discussions[5],
+        this.aftercare[0].discussions[6], 
+        this.aftercare[0].discussions[7],
+        this.aftercare[0].discussions[8], 
+        this.aftercare[0].discussions[9],
+      ];
+
+      for(const title of contentTitle){
+        for(const xss of XSS){
+          if(title.includes(xss)){
+            this.toastr.error('Unsafe content detected. Cannot save.');
+            return;
+          }
+          if(title.trim() === ""){
+            this.toastr.error('Empty content. Cannot save.');
+            return;
+          }
+        }
+      }
+
+      for(const box of contentBox1){
+        for(const xss of XSS){
+          if(box.includes(xss)){
+            this.toastr.error('Unsafe content detected. Cannot save.');
+            return;
+          }
+          if(box.trim() === ""){
+            this.toastr.error('Empty content. Cannot save.');
+            return;
+          }
+        }
+      }
+
+      for(const box of contentBox2){
+        for(const xss of XSS){
+          if(box.includes(xss)){
+            this.toastr.error('Unsafe content detected. Cannot save.');
+            return;
+          }
+          if(box.trim() === ""){
+            this.toastr.error('Empty content. Cannot save.');
+            return;
+          }
+        }
+      }
+
+      for(const box of contentBox3){
+        for(const xss of XSS){
+          if(box.includes(xss)){
+            this.toastr.error('Unsafe content detected. Cannot save.');
+            return;
+          }
+          if(box.trim() === ""){
+            this.toastr.error('Empty content. Cannot save.');
+            return;
+          }
+        }
+      }
+
+      for(const box of contentBox4){
+        for(const xss of XSS){
+          if(box.includes(xss)){
+            this.toastr.error('Unsafe content detected. Cannot save.');
+            return;
+          }
+          if(box.trim() === ""){
+            this.toastr.error('Empty content. Cannot save.');
+            return;
+          }
+        }
+      }
+
+      for(const box of contentBox5){
+        for(const xss of XSS){
+          if(box.includes(xss)){
+            this.toastr.error('Unsafe content detected. Cannot save.');
+            return;
+          }
+          if(box.trim() === ""){
+            this.toastr.error('Empty content. Cannot save.');
+            return;
+          }
+        }
+      }
+
+      for(const box of contentBox6){
+        for(const xss of XSS){
+          if(box.includes(xss)){
+            this.toastr.error('Unsafe content detected. Cannot save.');
+            return;
+          }
+          if(box.trim() === ""){
+            this.toastr.error('Empty content. Cannot save.');
+            return;
+          }
+        }
+      }
+
+      for(const discussions of contentDiscussions){
+        for(const xss of XSS){
+          if(discussions.includes(xss)){
+            this.toastr.error('Unsafe content detected. Cannot save.');
+            return;
+          }
+          if(discussions.trim() === ""){
+            this.toastr.error('Empty content. Cannot save.');
+            return;
+          }
+        }
+      }
+        
+        this.AdminAfterCareService.updateData(this.aftercare[0]).subscribe(updatedData =>{
         this.router.navigate(['/admin-aftercare']);
 
         this.toastr.success('Saved success');
       }, (err) =>{
         this.toastr.error("Error updating");
+        console.log(err);
       })
       this.isThereAnyChanges = false;
+      
+      
     }else{
       this.toastr.info("No changes were made");
     }
@@ -241,5 +396,45 @@ export class AdminAfterCareComponent implements OnInit {
     //     console.error('Error uploading file:', error);
     //   }
     // )
+  }
+
+  getSanitizedTitle(index: number): SafeHtml{
+    const content = this.title[index];
+    return this.sanitizer.bypassSecurityTrustHtml(content);
+  }
+
+  getSanitizedBox1(index: number): SafeHtml{
+    const Box = this.box_1[index];
+    return this.sanitizer.bypassSecurityTrustHtml(Box);
+  }
+
+  getSanitizedBox2(index: number): SafeHtml{
+    const Box = this.box_2[index];
+    return this.sanitizer.bypassSecurityTrustHtml(Box);
+  }
+
+  getSanitizedBox3(index: number): SafeHtml{
+    const Box = this.box_3[index];
+    return this.sanitizer.bypassSecurityTrustHtml(Box);
+  }
+
+  getSanitizedBox4(index: number): SafeHtml{
+    const Box = this.box_4[index];
+    return this.sanitizer.bypassSecurityTrustHtml(Box);
+  }
+
+  getSanitizedBox5(index: number): SafeHtml{
+    const Box = this.box_5[index];
+    return this.sanitizer.bypassSecurityTrustHtml(Box);
+  }
+
+  getSanitizedBox6(index: number): SafeHtml{
+    const Box = this.box_6[index];
+    return this.sanitizer.bypassSecurityTrustHtml(Box);
+  }
+
+  getSanitizedDiscussions(index: number): SafeHtml{
+    const Discussions = this.discussions[index];
+    return this.sanitizer.bypassSecurityTrustHtml(Discussions);
   }
 }

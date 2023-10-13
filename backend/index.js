@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const multer = require('multer');
 const sharp = require('sharp');
+const {validationResult} = require('express-validator');
 
 // Login
 const jwt = require('jsonwebtoken');
@@ -72,13 +73,19 @@ app.get('/admin-aftercare', async (req, res)=>{
 })
 
 app.put("/admin-aftercare/:id", async (req, res) =>{
+
         try{
-                const upstream_data = await AfterCare.findByIdAndUpdate(
-                        req.params.id,
-                        req.body,
-                        { new: true }
-                );
-                res.send(upstream_data);
+                const errors = validationResult(req);
+                if(!errors.isEmpty()){
+                        return res.status(400).json({ errors: errors.array()});
+                }else{
+                        const upstream_data = await AfterCare.findByIdAndUpdate(
+                                req.params.id,
+                                req.body,
+                                { new: true }
+                        );
+                        res.send(upstream_data);
+                }
         } catch (err){
                 res.status(500).send(err.message);
         }

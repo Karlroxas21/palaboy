@@ -26,6 +26,7 @@ export class AdminAfterCareService{
                         box_4: data.box_4,
                         box_5: data.box_5,
                         box_6: data.box_6,
+                        discussions: data.discussions
                 }
                 return this.http.put<any>(`${this.urlAPI}/${_id}`, json);
         }

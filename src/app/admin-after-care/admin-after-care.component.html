@@ -5,7 +5,8 @@
     <div class="col-md-8">
       <div *ngIf="!editing_title[0]" (click)="startEditingTitle(0)">
         <h1 class="text-center">
-          <b>{{ title[0] }}</b>
+          <!-- <b>{{ title[0] }}</b> -->
+          <b [innerHTML]="getSanitizedTitle(0)"></b>
         </h1>
       </div>
 
@@ -22,7 +23,8 @@
 
       <div *ngIf="!editing_title[1]" (click)="startEditingTitle(1)">
         <h4 class="text-center">
-          <b>{{ title[1] }}</b>
+          <!-- <b>{{ title[1] }}</b> -->
+          <b [innerHTML]="getSanitizedTitle(1)"></b>
         </h4>
       </div>
 
@@ -42,7 +44,8 @@
         <div class="container-fluid rounded-3 shadow bg-light p-5">
           <div *ngIf="!editing_box_1[0]" (click)="startEditingBox1(0)">
             <h4 class="text-center">
-              <b>{{ box_1[0] }}</b>
+              <!-- <b>{{ box_1[0] }}</b> -->
+              <b [innerHTML]="getSanitizedBox1(0)"></b>
             </h4>
           </div>
 
@@ -58,7 +61,8 @@
           ></textarea>
 
           <div *ngIf="!editing_box_1[1]" (click)="startEditingBox1(1)">
-            <p>{{ box_1[1] }}</p>
+            <!-- <p>{{ box_1[1] }}</p> -->
+            <b [innerHTML]="getSanitizedBox1(1)"></b>
           </div>
 
           <textarea
@@ -77,7 +81,8 @@
         <div class="container-fluid rounded-3 shadow bg-light p-5">
           <div *ngIf="!editing_box_2[0]" (click)="startEditingBox2(0)">
             <h4 class="text-center">
-              <b>{{ box_2[0] }}</b>
+              <!-- <b>{{ box_2[0] }}</b> -->
+              <b [innerHTML]="getSanitizedBox2(0)"></b>
             </h4>
           </div>
 
@@ -93,7 +98,8 @@
           ></textarea>
 
           <div *ngIf="!editing_box_2[1]" (click)="startEditingBox2(1)">
-            <p>{{ box_2[1] }}</p>
+            <!-- <p>{{ box_2[1] }}</p> -->
+            <b [innerHTML]="getSanitizedBox2(1)"></b>
           </div>
 
           <textarea
@@ -112,7 +118,8 @@
         <div class="container-fluid rounded-3 shadow bg-light p-5">
           <div *ngIf="!editing_box_3[0]" (click)="startEditingBox3(0)">
             <h4 class="text-center">
-              <b>{{ box_3[0] }}</b>
+              <!-- <b>{{ box_3[0] }}</b> -->
+              <b [innerHTML]="getSanitizedBox3(0)"></b>
             </h4>
           </div>
 
@@ -128,7 +135,8 @@
           ></textarea>
 
           <div *ngIf="!editing_box_3[1]" (click)="startEditingBox3(1)">
-            <p>{{ box_3[1] }}</p>
+            <!-- <p>{{ box_3[1] }}</p> -->
+            <b [innerHTML]="getSanitizedBox3(1)"></b>
           </div>
 
           <textarea
@@ -147,7 +155,8 @@
         <div class="container-fluid rounded-3 shadow bg-light p-5">
           <div *ngIf="!editing_box_4[0]" (click)="startEditingBox4(0)">
             <h4 class="text-center">
-              <b>{{ box_4[0] }}</b>
+              <!-- <b>{{ box_4[0] }}</b> -->
+              <b [innerHTML]="getSanitizedBox4(0)"></b>
             </h4>
           </div>
 
@@ -162,7 +171,8 @@
             [(ngModel)]="aftercare[0].box_4[0]"
           ></textarea>
           <div *ngIf="!editing_box_4[1]" (click)="startEditingBox4(1)">
-            <p>{{ box_4[1] }}</p>
+            <!-- <p>{{ box_4[1] }}</p> -->
+            <b [innerHTML]="getSanitizedBox4(1)"></b>
           </div>
 
           <textarea
@@ -181,7 +191,8 @@
         <div class="container-fluid rounded-3 shadow bg-light p-5">
           <div *ngIf="!editing_box_5[0]" (click)="startEditingBox5(0)">
             <h4 class="text-center">
-              <b>{{ box_5[0] }}</b>
+              <!-- <b>{{ box_5[0] }}</b> -->
+              <b [innerHTML]="getSanitizedBox5(0)"></b>
             </h4>
           </div>
 
@@ -197,7 +208,8 @@
           ></textarea>
 
           <div *ngIf="!editing_box_5[1]" (click)="startEditingBox5(1)">
-            <p>{{ box_5[1] }}</p>
+            <!-- <p>{{ box_5[1] }}</p> -->
+            <b [innerHTML]="getSanitizedBox5(1)"></b>
           </div>
 
           <textarea
@@ -216,7 +228,8 @@
         <div class="container-fluid rounded-3 shadow bg-light p-5">
           <div *ngIf="!editing_box_6[0]" (click)="startEditingBox6(0)">
             <h4 class="text-center">
-              <b>{{ box_6[0] }}</b>
+              <!-- <b>{{ box_6[0] }}</b> -->
+              <b [innerHTML]="getSanitizedBox6(0)"></b>
             </h4>
           </div>
 
@@ -231,7 +244,8 @@
             [(ngModel)]="aftercare[0].box_6[0]"
           ></textarea>
           <div *ngIf="!editing_box_6[1]" (click)="startEditingBox6(1)">
-            <p>{{ box_6[1] }}</p>
+            <!-- <p>{{ box_6[1] }}</p> -->
+            <b [innerHTML]="getSanitizedBox6(1)"></b>
           </div>
 
           <textarea
@@ -252,7 +266,8 @@
         <p class="text-big text-center"></p>
         <div *ngIf="!editing_title[2]" (click)="startEditingTitle(2)">
           <h1 class="text-center">
-            <b>{{ title[2] }}</b>
+            <!-- <b>{{ title[2] }}</b> -->
+            <b [innerHTML]="getSanitizedTitle(2)"></b>
           </h1>
         </div>
 
@@ -285,7 +300,8 @@
         <div class="col-md-8">
           <div *ngIf="!editing_title[3]" (click)="startEditingTitle(3)">
             <h1 class="text-center">
-              <b>{{ title[3] }}</b>
+              <!-- <b>{{ title[3] }}</b> -->
+              <b [innerHTML]="getSanitizedTitle(3)"></b>
             </h1>
           </div>
 
@@ -304,7 +320,9 @@
             (click)="startEditingDiscussions(0)"
           >
             <p class="fs-3">
-              <b>1. {{ discussions[0] }}</b>
+              <!-- <b>1. {{ discussions[0] }}</b> -->
+              1.
+              <b [innerHTML]="getSanitizedDiscussions(0)"></b>
             </p>
           </div>
 
@@ -323,7 +341,8 @@
             *ngIf="!editing_discussions[1]"
             (click)="startEditingDiscussions(1)"
           >
-            <p class="text-justify">{{ discussions[1] }}</p>
+            <!-- <p class="text-justify">{{ discussions[1] }}</p> -->
+            <p class="text-justify" [innerHTML]="getSanitizedDiscussions(1)"></p>
           </div>
 
           <textarea
@@ -341,7 +360,8 @@
             *ngIf="!editing_discussions[2]"
             (click)="startEditingDiscussions(2)"
           >
-            <p class="text-justify">{{ discussions[2] }}</p>
+            <!-- <p class="text-justify">{{ discussions[2] }}</p> -->
+            <p class="text-justify" [innerHTML]="getSanitizedDiscussions(2)"></p>
           </div>
 
           <textarea
@@ -360,7 +380,9 @@
             (click)="startEditingDiscussions(3)"
           >
             <p class="fs-3">
-              <b>2. {{ discussions[3] }}</b>
+              <!-- <b>2. {{ discussions[3] }}</b> -->
+              2.
+              <b [innerHTML]="getSanitizedDiscussions(3)"></b>
             </p>
           </div>
 
@@ -379,7 +401,8 @@
             *ngIf="!editing_discussions[4]"
             (click)="startEditingDiscussions(4)"
           >
-            <p class="text-justify">{{ discussions[4] }}</p>
+            <!-- <p class="text-justify">{{ discussions[4] }}</p> -->
+            <p class="text-justify" [innerHTML]="getSanitizedDiscussions(4)"></p>
           </div>
 
           <textarea
@@ -397,7 +420,8 @@
             *ngIf="!editing_discussions[5]"
             (click)="startEditingDiscussions(5)"
           >
-            <p class="text-justify">{{ discussions[5] }}</p>
+            <!-- <p class="text-justify">{{ discussions[5] }}</p> -->
+            <p class="text-justify" [innerHTML]="getSanitizedDiscussions(5)"></p>
           </div>
 
           <textarea
@@ -416,7 +440,9 @@
             (click)="startEditingDiscussions(6)"
           >
             <p class="fs-3">
-              <b>3. {{ discussions[6] }}</b>
+              <!-- <b>3. {{ discussions[6] }}</b> -->
+              3.
+              <b [innerHTML]="getSanitizedDiscussions(6)"></b>
             </p>
           </div>
 
@@ -434,7 +460,8 @@
             *ngIf="!editing_discussions[7]"
             (click)="startEditingDiscussions(7)"
           >
-            <p class="text-justify">{{ discussions[7] }}</p>
+            <!-- <p class="text-justify">{{ discussions[7] }}</p> -->
+            <p class="text-justify" [innerHTML]="getSanitizedDiscussions(7)"></p>
           </div>
 
           <textarea
@@ -451,7 +478,9 @@
             *ngIf="!editing_discussions[8]"
             (click)="startEditingDiscussions(8)"
           >
-            <p class="text-justify">{{ discussions[8] }}</p>
+            <!-- <p class="text-justify">{{ discussions[8] }}</p> -->
+            <p class="text-justify" [innerHTML]="getSanitizedDiscussions(8)"></p>
+
           </div>
 
           <textarea
@@ -468,7 +497,8 @@
             *ngIf="!editing_discussions[9]"
             (click)="startEditingDiscussions(9)"
           >
-            <p class="text-justify">{{ discussions[9] }}</p>
+            <!-- <p class="text-justify">{{ discussions[9] }}</p> -->
+            <p class="text-justify" [innerHTML]="getSanitizedDiscussions(9)"></p>
           </div>
 
           <textarea
