@@ -268,6 +268,17 @@
         ></textarea>
         <div class="container-fluid d-flex justify-content-center">
           <img src="assets/badfood.png" />
+          <h4>Change picture:</h4>
+          <br>
+          <!-- Upload -->
+          <form (submit)="onFileSelected1($event)" enctype="multipart/form-data">
+            <input type="file" (change)="fileSelected1($event)" #fileInput1>
+            <button type="submit">Upload</button>
+          </form>
+          <!--  -->
+          <br>
+          <p>*recommended resolution: 675px * 1033px</p>
+          <p>*max-size: 1mb</p>
         </div>
       </section>
       <section id="safefood" class="row d-flex justify-content-center">
@@ -475,6 +486,17 @@
       <section id="bathe">
         <div class="container-fluid justify-content-center d-flex">
           <img src="assets/bathe.png" class="w-75" />
+          <h4>Change picture:</h4>
+          <br>
+          <!-- Upload -->
+          <form (submit)="onFileSelected2($event)" enctype="multipart/form-data">
+            <input type="file" (change)="fileSelected2($event)" #fileInput2>
+            <button type="submit">Upload</button>
+          </form>
+          <!--  -->
+          <br>
+          <p>*recommended resolution: 1728px * 2665px</p>
+          <p>*max-size: 1mb</p>
         </div>
       </section>
     </div>

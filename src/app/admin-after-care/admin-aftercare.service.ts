@@ -1,6 +1,7 @@
-import { Injectable } from "@angular/core";
+import { ElementRef, Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
+import { ToastrService } from "ngx-toastr";
 
 @Injectable({
         providedIn: 'root'
@@ -9,7 +10,7 @@ import { Observable } from "rxjs";
 export class AdminAfterCareService{
         private urlAPI = "http://localhost:80/admin-aftercare";
 
-        constructor(private http: HttpClient){}
+        constructor(private http: HttpClient, private toastr: ToastrService){}
 
         getData(): Observable<any>{
                 return this.http.get<any>(this.urlAPI);
@@ -28,4 +29,31 @@ export class AdminAfterCareService{
                 }
                 return this.http.put<any>(`${this.urlAPI}/${_id}`, json);
         }
+
+        uploadImage1(image: FormData, fileInput: ElementRef): void {
+                this.http.post('http://localhost:80/upload1', image, { responseType: 'text' as 'json' }).subscribe(
+                        (response) => {
+                                // Toastr here
+                                this.toastr.success('File uploaded successfully. Refresh to see changes');
+                                fileInput.nativeElement.value = '';
+                        }, (error) => {
+                                // Toastr here
+                                this.toastr.error('An error occurred');
+                        }
+                )
+        }
+
+        uploadImage2(image: FormData, fileInput: ElementRef): void {
+                this.http.post('http://localhost:80/upload2', image, { responseType: 'text' as 'json' }).subscribe(
+                        (response) => {
+                                // Toastr here
+                                this.toastr.success('File uploaded successfully. Refresh to see changes');
+                                fileInput.nativeElement.value = '';
+                        }, (error) => {
+                                // Toastr here
+                                this.toastr.error('An error occurred');
+                        }
+                )
+        }
+
 }

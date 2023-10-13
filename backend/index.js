@@ -3,6 +3,8 @@ const cors = require('cors');
 const path = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const multer = require('multer');
+const sharp = require('sharp');
 
 // Login
 const jwt = require('jsonwebtoken');
@@ -25,12 +27,14 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // When dockerizing
-// app.use(express.static(path.join(__dirname, 'dist/ecotopia-capstone')));
+app.use(history());
 
-// app.get('/', (req, res) => {
-//         res.
-//         sendFile(path.join(__dirname, 'dist/ecotopia-capstone/index.html'));
-// });
+app.use(express.static(path.join(__dirname, 'dist/palaboy')));
+
+app.get('/', (req, res) => {
+        res.
+        sendFile(path.join(__dirname, 'dist/palaboy/index.html'));
+});
 
 // Admin Rescue
 app.get('/admin-rescue', async (req, res)=>{
@@ -136,6 +140,91 @@ app.get('/rescue', async(req, res) =>{
                 console.error();
                 res.status(500).json({ message: 'Internal server error'});
         }
+})
+
+const storage1 = multer.diskStorage({
+        destination: (req, file, cb) =>{
+                // cb(null, './dist/palaboy/assets');
+                cb(null, '../src/assets');
+        },
+        filename: (req, file, cb) => {
+                cb(null, 'badfood.png');
+        }
+})
+const upload1 = multer({
+        storage: storage1,
+        limits: { fileSize: 1000000}, // 1 MB
+});
+
+app.post('/upload1', upload1.single('image'),(req, res) =>{
+        if(!req.file){
+                return res.status(400).json({ error: 'No file uploaded'});  
+        }
+
+        sharp(req.file.path)
+        .metadata().then((metadata) =>{
+                const { width, height } = metadata;
+                const maxWidth = 675;
+                const maxHeight = 1033;
+
+                if(width > maxWidth || height > maxHeight){
+                        return res.status(400).json({ error: 'Image dimensions are too large.' });   
+                }
+
+                return res.status(200).send('File uploaded successfully.');
+        }).catch((err) =>{
+                return res.status(500);
+        });
+})
+
+// // Error handling middleware for Multer "File too large" error
+// app.use((err, req, res, next) => {
+//         if (err instanceof multer.MulterError) {
+//           if (err.code === 'LIMIT_FILE_SIZE') {
+
+//                 const clientScript = `
+//                         <script>
+//                         toastr.error('File is too large. Maximum file size is 1MB.');
+//                         </script>
+//                 `;
+//             return res.status(400).send(clientScript);
+//           }
+//         }
+//         next(err); // Pass the error to the default error handler
+//       });
+
+const storage2 = multer.diskStorage({
+        destination: (req, file, cb) =>{
+                // cb(null, './dist/palaboy/assets');
+                cb(null, '../src/assets');
+        },
+        filename: (req, file, cb) => {
+                cb(null, 'bathe.png');
+        }
+})
+const upload2 = multer({
+        storage: storage2,
+        limits: { fileSize: 1000000}, // 1mb      
+});
+
+app.post('/upload2', upload2.single('image'),(req, res) =>{
+        if(!req.file){
+                return res.status(400).json({ error: 'No file uploaded'});  
+        }
+        sharp(req.file.path)
+        .metadata().then((metadata) =>{
+                const { width, height } = metadata;
+                const maxWidth = 1728;
+                const maxHeight = 2665;
+
+                if(width > maxWidth || height > maxHeight){
+                        return res.status(400).json({ error: 'Image dimensions are too large.' });   
+                }
+
+                return res.status(200).send('File uploaded successfully.');
+        }).catch((err) =>{
+                return res.status(500);
+        });
 })
 
 app.listen(port, ()=>{

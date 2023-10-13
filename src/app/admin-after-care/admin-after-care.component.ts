@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -25,6 +25,12 @@ export class AdminAfterCareComponent implements OnInit {
   discussions: string[] = [];
 
   isThereAnyChanges: boolean = false;
+
+  @ViewChild('fileInput1') fileInput1!: ElementRef;
+  selectedFile1!: File;
+  @ViewChild('fileInput2') fileInput2!: ElementRef;
+  selectedFile2!: File;
+
 
   constructor(private http: HttpClient,
     private titleService: Title,
@@ -183,5 +189,57 @@ export class AdminAfterCareComponent implements OnInit {
 
   doesChange(){
     this.isThereAnyChanges = true;
+  }
+
+  fileSelected1(event: any): void{
+    this.selectedFile1 = event.target.files[0];
+  }
+
+  onFileSelected1(event: Event): void{
+
+    if(!this.selectedFile1){
+      this.toastr.warning('No file selected');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('image', this.selectedFile1);
+
+    this.AdminAfterCareService.uploadImage1(formData, this.fileInput1)
+
+    // this.http.post('http://localhost:80/upload', formData, { responseType: 'text' as 'json' }).subscribe(
+    //   (response) =>{
+    //     console.log('File uploaded successfuly');
+    //     this.fileInput.nativeElement.value = '';
+    //   },(error)=>{
+    //     console.error('Error uploading file:', error);
+    //   }
+    // )
+  }
+
+  fileSelected2(event: any): void{
+    this.selectedFile2 = event.target.files[0];
+  }
+
+  onFileSelected2(event: Event): void{
+
+    if(!this.selectedFile2){
+      this.toastr.warning('No file selected');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('image', this.selectedFile2);
+
+    this.AdminAfterCareService.uploadImage2(formData, this.fileInput2)
+
+    // this.http.post('http://localhost:80/upload', formData, { responseType: 'text' as 'json' }).subscribe(
+    //   (response) =>{
+    //     console.log('File uploaded successfuly');
+    //     this.fileInput.nativeElement.value = '';
+    //   },(error)=>{
+    //     console.error('Error uploading file:', error);
+    //   }
+    // )
   }
 }

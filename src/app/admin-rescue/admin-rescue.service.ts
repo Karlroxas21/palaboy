@@ -3,20 +3,20 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 
 @Injectable({
-        providedIn:'root'
+        providedIn: 'root'
 })
 
 export class AdminRescueService {
 
         private urlAPI = "http://localhost:80/admin-rescue";
 
-        constructor(private http: HttpClient){}
+        constructor(private http: HttpClient) { }
 
-        getData(): Observable<any>{
+        getData(): Observable<any> {
                 return this.http.get<any>(this.urlAPI);
         }
 
-        updateData(data:any): Observable<any>{
+        updateData(data: any): Observable<any> {
                 const _id = data._id;
                 const json = {
                         title: data.title,
