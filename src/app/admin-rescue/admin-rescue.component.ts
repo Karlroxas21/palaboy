@@ -5,6 +5,7 @@ import { AdminRescueService } from './admin-rescue.service';
 import { Router } from '@angular/router';
 
 import { ToastrService } from 'ngx-toastr';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 @Component({
   selector: 'app-admin-rescue',
   templateUrl: './admin-rescue.component.html',
@@ -29,7 +30,8 @@ export class AdminRescueComponent implements OnInit {
     private titleService: Title,
     private AdminRescueService: AdminRescueService,
     private router: Router,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,
+    private sanitizer: DomSanitizer) { }
  
 
   arrayPusher(refArray: string[], size: number, property: string) {
@@ -67,6 +69,144 @@ export class AdminRescueComponent implements OnInit {
 
   updateData(): void{
     if(this.isAnyChanges()){
+
+      const XSS: string [] = ["<script>", "</script>", "<img>", "</img", "<iframe>", "</iframe>", "onload", "onerror"]
+
+      const contentTitle: string [] = [
+        this.rescue[0].title[0], 
+        this.rescue[0].title[1]];
+
+      const contentBox1: string [] = [
+        this.rescue[0].box_1[0], 
+        this.rescue[0].box_1[1],
+        this.rescue[0].box_1[2], 
+        this.rescue[0].box_1[3],
+        this.rescue[0].box_1[4], 
+        this.rescue[0].box_1[5],
+        this.rescue[0].box_1[6], 
+        this.rescue[0].box_1[7],
+        this.rescue[0].box_1[8]];
+
+      const contentBox2: string [] = [
+        this.rescue[0].box_2[0], 
+        this.rescue[0].box_2[1],
+        this.rescue[0].box_2[2]];
+
+      const contentBox3: string [] = [
+        this.rescue[0].box_3[0], 
+        this.rescue[0].box_3[1]];
+
+      const contentBox4: string [] = [
+        this.rescue[0].box_4[0], 
+        this.rescue[0].box_4[1],
+        this.rescue[0].box_4[2], 
+        this.rescue[0].box_4[3],
+        this.rescue[0].box_4[4], 
+        this.rescue[0].box_4[5]];
+
+      const contentBox5: string [] = [
+        this.rescue[0].box_5[0], 
+        this.rescue[0].box_5[1],
+        this.rescue[0].box_5[2], 
+        this.rescue[0].box_5[3],
+        this.rescue[0].box_5[4], 
+        this.rescue[0].box_5[5]];
+
+      const contentBox6: string [] = [
+        this.rescue[0].box_6[0], 
+        this.rescue[0].box_6[1]];
+
+      for(const title of contentTitle){
+        for(const xss of XSS){
+          if(title.includes(xss)){
+            this.toastr.error('Unsafe content detected. Cannot save.');
+            return;
+          }
+          if(title.trim() === ""){
+            this.toastr.error('Empty content. Cannot save.');
+            return;
+          }
+        }
+      }
+
+      for(const title of contentBox1){
+        for(const xss of XSS){
+          if(title.includes(xss)){
+            this.toastr.error('Unsafe content detected. Cannot save.');
+            return;
+          }
+          if(title.trim() === ""){
+            this.toastr.error('Empty content. Cannot save.');
+            return;
+          }
+        }
+      }
+
+      for(const title of contentBox2){
+        for(const xss of XSS){
+          if(title.includes(xss)){
+            this.toastr.error('Unsafe content detected. Cannot save.');
+            return;
+          }
+          if(title.trim() === ""){
+            this.toastr.error('Empty content. Cannot save.');
+            return;
+          }
+        }
+      }
+
+      for(const title of contentBox3){
+        for(const xss of XSS){
+          if(title.includes(xss)){
+            this.toastr.error('Unsafe content detected. Cannot save.');
+            return;
+          }
+          if(title.trim() === ""){
+            this.toastr.error('Empty content. Cannot save.');
+            return;
+          }
+        }
+      }
+
+      for(const title of contentBox4){
+        for(const xss of XSS){
+          if(title.includes(xss)){
+            this.toastr.error('Unsafe content detected. Cannot save.');
+            return;
+          }
+          if(title.trim() === ""){
+            this.toastr.error('Empty content. Cannot save.');
+            return;
+          }
+        }
+      }
+
+      for(const title of contentBox5){
+        for(const xss of XSS){
+          if(title.includes(xss)){
+            this.toastr.error('Unsafe content detected. Cannot save.');
+            return;
+          }
+          if(title.trim() === ""){
+            this.toastr.error('Empty content. Cannot save.');
+            return;
+          }
+        }
+      }
+
+      for(const title of contentBox6){
+        for(const xss of XSS){
+          if(title.includes(xss)){
+            this.toastr.error('Unsafe content detected. Cannot save.');
+            return;
+          }
+          if(title.trim() === ""){
+            this.toastr.error('Empty content. Cannot save.');
+            return;
+          }
+        }
+      }
+
       this.AdminRescueService.updateData(this.rescue[0]).subscribe(updatedData =>{
         this.router.navigate(['/admin-rescue']);
         
@@ -170,5 +310,40 @@ export class AdminRescueComponent implements OnInit {
 
   doesChange(){
     this.isThereAnyChanges = true;
+  }
+
+  getSanitizedTitle(index: number): SafeHtml{
+    const content = this.title[index];
+    return this.sanitizer.bypassSecurityTrustHtml(content);
+  }
+
+  getSanitizedBox1(index: number): SafeHtml{
+    const Box = this.box_1[index];
+    return this.sanitizer.bypassSecurityTrustHtml(Box);
+  }
+
+  getSanitizedBox2(index: number): SafeHtml{
+    const Box = this.box_2[index];
+    return this.sanitizer.bypassSecurityTrustHtml(Box);
+  }
+
+  getSanitizedBox3(index: number): SafeHtml{
+    const Box = this.box_3[index];
+    return this.sanitizer.bypassSecurityTrustHtml(Box);
+  }
+
+  getSanitizedBox4(index: number): SafeHtml{
+    const Box = this.box_4[index];
+    return this.sanitizer.bypassSecurityTrustHtml(Box);
+  }
+
+  getSanitizedBox5(index: number): SafeHtml{
+    const Box = this.box_5[index];
+    return this.sanitizer.bypassSecurityTrustHtml(Box);
+  }
+
+  getSanitizedBox6(index: number): SafeHtml{
+    const Box = this.box_6[index];
+    return this.sanitizer.bypassSecurityTrustHtml(Box);
   }
 }

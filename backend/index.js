@@ -50,11 +50,17 @@ app.get('/admin-rescue', async (req, res)=>{
 
 app.put("/admin-rescue/:id", async (req, res) =>{
         try{
-                const upstream_data = await Rescue.findByIdAndUpdate(
-                        req.params.id,
-                        req.body,
-                        { new: true }
-                );
+
+                const errors = validationResult(req);
+                if(!errors.isEmpty()){
+                        return res.status(400).json({ errors: errors.array()});
+                }else{
+                        const upstream_data = await Rescue.findByIdAndUpdate(
+                                req.params.id,
+                                req.body,
+                                { new: true }
+                        );
+                }
                 res.send(upstream_data);
         } catch (err){
                 res.status(500).send(err.message);
