@@ -1,14 +1,14 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
+import { environment } from '../../environments/environment';
 
 @Injectable({
         providedIn: 'root'
 })
 
 export class AdminRescueService {
-
-        private urlAPI = "http://localhost:80/admin-rescue";
+        private urlAPI = `${environment.apiUrl}admin-rescue`;
 
         constructor(private http: HttpClient) { }
 

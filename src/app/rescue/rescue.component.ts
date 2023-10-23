@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-rescue',
@@ -15,7 +16,7 @@ export class RescueComponent {
     private titleService: Title){}
 
   ngOnInit(): void{
-    this.http.get<any[]>('http://localhost:80/rescue')
+    this.http.get<any[]>(`${environment.apiUrl}rescue`)
     .subscribe(rescue =>{
       this.rescue = rescue;
     })

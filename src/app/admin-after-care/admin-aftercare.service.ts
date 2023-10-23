@@ -2,13 +2,15 @@ import { ElementRef, Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { ToastrService } from "ngx-toastr";
+import { environment } from '../../environments/environment';
 
 @Injectable({
         providedIn: 'root'
 })
 
 export class AdminAfterCareService{
-        private urlAPI = "http://localhost:80/admin-aftercare";
+        private urlAPI = `${environment.apiUrl}admin-aftercare`;
+
 
         constructor(private http: HttpClient, private toastr: ToastrService){}
 

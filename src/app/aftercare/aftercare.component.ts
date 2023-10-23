@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-aftercare',
@@ -14,7 +15,7 @@ export class AftercareComponent {
   constructor(private http: HttpClient, private titleService: Title){}
 
   ngOnInit(): void{
-    this.http.get<any[]>('http://localhost:80/aftercare')
+    this.http.get<any[]>(`${environment.apiUrl}aftercare`)
     .subscribe(after_care =>{
       this.after_care = after_care;
     });
