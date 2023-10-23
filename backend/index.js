@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -7,6 +9,8 @@ const multer = require('multer');
 const sharp = require('sharp');
 const {validationResult} = require('express-validator');
 
+const helmet = require('helmet');
+      
 // Login
 const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
@@ -20,7 +24,35 @@ const AfterCare = require('./model/after-care.model');
 
 const app = express();
 const port = process.env.PORT || 80;
-mongoose.connect('mongodb+srv://elainerose0316:ILTaCb8Vct3vKBic@cluster0.u0fxycb.mongodb.net/palaboy');
+
+const dbConnection = process.env.DB_CONNECTION;
+
+mongoose.connect(dbConnection);
+
+
+app.disable('x-powered-by');
+
+app.use(helmet.contentSecurityPolicy({
+        directives: {
+        defaultSrc: ["'self'", "http://localhost"], 
+        scriptSrc: ["'self'", "'unsafe-eval'", "'unsafe-inline'"],
+        styleSrc: ["'self'","'unsafe-inline'"],
+        imgSrc: ["'self'", "data:", "blob:", "'unsafe-inline'"],
+        scriptSrcAttr: ["'unsafe-inline'"],
+        reportTo: ["'csp-endpoint'"]
+        // Add more directives as needed
+        }
+}));
+
+app.use(helmet.hsts({
+        maxAge: 15552000, // 180 days in secs
+        includeSubDomains: true,
+}))
+
+app.use((req, res, next) =>{
+        res.setHeader('X-Content-Type-Options', 'nosniff');
+        next();
+})
 
 // Middleware
 app.use(cors());
