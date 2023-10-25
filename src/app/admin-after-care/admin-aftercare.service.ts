@@ -34,7 +34,7 @@ export class AdminAfterCareService{
         }
 
         uploadImage1(image: FormData, fileInput: ElementRef): void {
-                this.http.post('http://localhost:80/upload1', image, { responseType: 'text' as 'json' }).subscribe(
+                this.http.post(`${environment.apiUrl}upload1`, image, { responseType: 'text' as 'json' }).subscribe(
                         (response) => {
                                 // Toastr here
                                 this.toastr.success('File uploaded successfully. Refresh to see changes');
@@ -47,7 +47,7 @@ export class AdminAfterCareService{
         }
 
         uploadImage2(image: FormData, fileInput: ElementRef): void {
-                this.http.post('http://localhost:80/upload2', image, { responseType: 'text' as 'json' }).subscribe(
+                this.http.post(`${environment.apiUrl}upload2`, image, { responseType: 'text' as 'json' }).subscribe(
                         (response) => {
                                 // Toastr here
                                 this.toastr.success('File uploaded successfully. Refresh to see changes');
