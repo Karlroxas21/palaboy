@@ -10,16 +10,29 @@ import { AdminRescueComponent } from './admin-rescue/admin-rescue.component';
 import { AdminAfterCareComponent } from './admin-after-care/admin-after-care.component';
 
 import { AuthGuard } from './auth.guard';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { NavbarComponent } from './navbar/navbar.component';
+
 const routes: Routes = [
-  {component: HomeComponent, path: ''},
-  {component: AboutusComponent, path: 'aboutus'},
-  {component: AftercareComponent, path: 'aftercare'},
-  {component: RescueComponent, path: 'rescue'},
-  {component: ContactComponent, path: 'contact'},
-  {component: LoginComponent, path: 'login'},
-  {component: AdminRescueComponent, path: 'admin-rescue', canActivate: [AuthGuard]},
-  {component: AdminAfterCareComponent, path: 'admin-aftercare', canActivate: [AuthGuard]}
-]
+  {
+    path: '',
+    component: NavbarComponent,
+    children: [
+      {component: HomeComponent, path: ''},
+      {component: AboutusComponent, path: 'aboutus'},
+      {component: AftercareComponent, path: 'aftercare'},
+      {component: RescueComponent, path: 'rescue'},
+      {component: ContactComponent, path: 'contact'},
+      {component: LoginComponent, path: 'login'},
+      {component: AdminRescueComponent, path: 'admin-rescue', canActivate: [AuthGuard]},
+      {component: AdminAfterCareComponent, path: 'admin-aftercare', canActivate: [AuthGuard]}
+    ]
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {

@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="!hideNavbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="">
+      <img src="assets/navlogo.png" alt="" width="90" height="30" />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="collapse navbar-collapse justify-content-center pe-5"
+      id="navbarSupportedContent"
+    >
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item" routerLink="" [routerLinkActive]="'active'">
+          <a class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="rescue" [routerLinkActive]="'active'"
+            >Rescue</a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="aftercare"
+            [routerLinkActive]="'active'"
+            >After Care</a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="aboutus" [routerLinkActive]="'active'"
+            >About</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="contact" [routerLinkActive]="'active'"
+            >Contact</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>

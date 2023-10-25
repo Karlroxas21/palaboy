@@ -19,6 +19,8 @@ import { AdminAfterCareComponent } from './admin-after-care/admin-after-care.com
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { ToastrModule } from 'ngx-toastr';
     AdminRescueComponent,
     AdminPanelComponent,
     AdminAfterCareComponent,
+    NotFoundComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
