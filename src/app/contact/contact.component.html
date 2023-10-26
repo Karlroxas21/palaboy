@@ -1,5 +1,46 @@
 <div class="main-container">
+        <!-- <form action="">
+                <div class="contact-form  mg-x">    
+                        <h1>Contact Us</h1>
+                        <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                <label for="floatingInput">Email address</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                                <label for="floatingPassword">Password</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                                <label for="floatingTextarea">Message</label>
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="Submit">
+
+                </div>
+        </form> -->
         <div class="text-contact-us"><h1>Contact Us</h1></div>
+
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+                <div class="contact-form mg-x">
+
+                  <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="email" placeholder="name@example.com" formControlName="email">
+                    <label for="email">Email address</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="subject" placeholder="Subject" formControlName="subject">
+                    <label for="subject">Subject</label>
+                  </div>
+                  <div class="form-floating mb-3">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="message" formControlName="message"></textarea>
+                    <label for="message">Message</label>
+                  </div>
+                  <input class="btn btn-primary" type="submit" value="Submit" [disabled]="contactForm.invalid">
+                </div>
+              </form>
+              
+       
+       
         <div class="contact-container">
                 <div class="organization">
                         <div class="logo">
