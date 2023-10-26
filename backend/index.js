@@ -21,6 +21,7 @@ const history = require('connect-history-api-fallback');
 
 const Rescue = require('./model/rescue.model');
 const AfterCare = require('./model/after-care.model');
+const nodemailer = require('nodemailer');
 
 const app = express();
 const port = process.env.PORT || 80;
@@ -60,7 +61,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // When dockerizing
-app.use(history());
+// app.use(history());
 
 app.use(express.static(path.join(__dirname, 'dist/palaboy')));
 
@@ -271,6 +272,38 @@ app.post('/upload2', upload2.single('image'),(req, res) =>{
                 return res.status(500);
         });
 })
+
+// nodemailer
+const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+                user: 'eyfairiescontact62@gmail.com',
+                pass: 'gtqt zkiq tbfn drxt ',
+        },
+});
+
+app.post("/contact_form", (req, res) =>{
+        const { email, subject, message } = req.body;
+
+        const mailOptions = {
+                from: email,
+                to: 'eyfairiescontact62@gmail.com',
+                subject: subject,
+                text: `Sender email: <${email}>`+"\n\n"+`${message}`,
+        };
+
+        transporter.sendMail(mailOptions, (err, info) =>{
+                if(err){
+                        console.error(err);
+                        res.status(500).json({ message: 'Failed to send email'});
+                }else{
+                        console.log('Email sent: ', info.response);
+                        res.json({ message: 'Email sent successfully' });
+                }
+        });
+});
+
+
 
 app.listen(port, ()=>{
         console.log(`Listening on ${port}`);
